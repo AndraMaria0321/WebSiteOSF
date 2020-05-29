@@ -1,0 +1,136 @@
+/* categories buttons */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+.tab a {
+  background-color: inherit;
+  float: right;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  text-decoration: none;
+  color: #0275d8;
+  border-style: solid;
+  border-color: #ddd;
+  border-radius: 30px;
+}
+.tab a:hover {
+  background-color: #ddd;
+}
+.tab a.active {
+  background-color: #ccc;
+}
+
+/* breadcrumb bar */
+ul.breadcrumb {
+  padding: 10px 16px;
+  list-style: none;
+  background-color: #eee;
+}
+ul.breadcrumb li {
+  display: inline;
+  font-size: 18px;
+}
+ul.breadcrumb li+li:before {
+  padding: 8px;
+  color: black;
+  content: "/\00a0";
+}
+ul.breadcrumb li a {
+  color: #0275d8;
+  text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+}
+
+/* grid view */
+.column {
+  float: left;
+  width: 50%;
+  padding-left: 140px;
+  height: 480px;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* buttons */
+.btn {
+  background-color: #0275d8;
+  border: none;
+  color: white;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 20px;
+}
+
+/* footer */
+footer {
+  float: right;
+  color: grey;
+  font-size: 12px;
+}
+
+/* image */
+img.prod {
+  height: 180px;
+  width: 40%;
+}
+
+/* paragraph */
+p {
+  font-size: 15px;
+}
+
+/* h */
+h1, h3{
+  color: black;
+}
+
+/* header */
+header{
+  padding-left: 30px;
+}
+
+/* log button */
+a#top{
+  float: right;
+  border-radius: 0px;
+  padding: 14px 16px;
+}
+
+/* if client logged in */
+ul.iflog {
+  float: right;
+  padding: 10px 16px;
+  list-style: none;
+}
+ul.iflog li{
+  display: inline;
+}
+ul.iflog li a {
+  color: #0275d8;
+  text-decoration: none;
+  color: white;
+  border-radius: 0px;
+}
+ul.iflog li a:hover {
+  color: #01447e;
+  text-decoration: none;
+}
+
+/* products display */
+div.prod{
+  border-style: inset;
+}
