@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/style.css" rel="stylesheet" type="text/css">
+    <source src='../activeButon.js'/>
+    <title>Shop</title>
+</head>
+<body>
+    <div class ="main">
+        <% for(var i=0; i < categvar.length; i++) { %>
+            <% if(categvar[i].id == categoryId) { %> 
+                <div class='tab'>
+                    <% if(genderId == 'womens') { %>
+                        <header><h1>Womens</h1></header>
+                        <a href='http://localhost:3000/home/<%=genderId%>/womens-accessories' class='' id='link'>Accessories</a>
+                        <a href='http://localhost:3000/home/<%=genderId%>/womens-jewelry' class='' id='link'>Jewelry</a>
+                        <a href='http://localhost:3000/home/<%=genderId%>/womens-clothing' class='' id='link'>Clothing</a>
+                    
+                    <% } %>
+                    <% if(genderId == 'mens') { %>
+                        <header><h1>Mens</h1></header>
+                        <a href='http://localhost:3000/home/<%=genderId%>/mens-accessories' class='' id='link'>Accessories</a>
+                        <a href='http://localhost:3000/home/<%=genderId%>/mens-clothing' class='' id='link'>Clothing</a>
+                    <% } %>
+                </div>
+                <ul class= "breadcrumb">
+                    <li><a href='/home'>Home</a></li>
+                    <li><a href='http://localhost:3000/home/<%=genderId%>/<%=categvar[i].id%>'><%= categvar[i].name %></a></li>
+                </ul>
+                <center>
+                <h2><%= categvar[i].page_title %></h2>
+                <p><%= categvar[i].page_description %></p>
+                </center>
+            <% } %>
+        <% } %>
+    </div>
+    <br>
+    <div>
+        <% for(var i=0; i < categvar.length; i++) { %> 
+            <% if(categvar[i].parent_category_id == categoryId) { %>
+                <br>
+                <center>
+                <img src = '/images/<%= categvar[i].image %>'/>
+                <h3><%= categvar[i].name %></h3>
+                <p><%= categvar[i].page_description %></p>
+                <a class= 'btn' href='http://localhost:3000/home/<%=genderId%>/<%=categoryId%>/<%=categvar[i].id%>'>View products</a>
+                <br>
+                </center> 
+            <% } %>
+        <% } %>
+    </div>
+    <footer>
+        <p>Copyright 2020 OSF Global Services</p>
+    </footer>
+</body>
+</html>

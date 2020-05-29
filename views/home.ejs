@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/style.css" rel="stylesheet" type="text/css">
+    <source src='../activeButon.js'/>
+    <title>Shop</title>
+</head>
+<body>
+    <div class ="main">
+        <header><h1>Shop</h1></header>
+        <ul class= "breadcrumb">
+            <li href='/home'><a>Home</a></li>
+        </ul>
+        <a href='/home/shopping-cart' role='button' id='top'><i class="fas fa-shopping-cart">  Shopping Cart</i></a>
+        <a href='/auth' class='btn' role='button' id='top'><i class="far fa-user">  Login</i></a>
+    </div>
+        
+        <center>
+        <div>
+            <h1>Womens</h1>
+            <% for(var i=0; i < categvar.length; i++) { %> 
+                <% if(categvar[i].id == 'womens-accessories') { %>
+                    <br>
+                    <img src = '/images/<%= categvar[i].image %>'/>
+                    <p></p>
+                    <a href='/home/womens/womens-accessories' class='btn' role='button' id='link'>Accessories</a>
+                    <br>
+                <% } %>
+                <% if(categvar[i].id == 'womens-jewelry') { %>
+                    <br>
+                    <img src = '/images/<%= categvar[i].image %>'/>
+                    <p></p>
+                    <a href='/home/womens/womens-jewelry' class='btn' role='button' id='link'>Jewelry</a>
+                    <br>
+                <% } %>
+                <% if(categvar[i].id == 'womens-clothing') { %>
+                    <br>
+                    <img src = '/images/<%= categvar[i].image %>'/>
+                    <p></p>
+                    <a href='/home/womens/womens-clothing' class='btn' role='button' id='link'>Clothing</a>
+                    <br>
+                <% } %>
+            <% } %>
+        </div>
+        <br><br><br>
+        <div>
+            <h1>Mens</h1>
+            <% for(var i=0; i < categvar.length; i++) { %> 
+                <% if(categvar[i].id == 'mens-accessories') { %>
+                    <br>
+                    <img src = '/images/<%= categvar[i].image %>'/>
+                    <p></p>
+                    <a href='/home/mens/mens-accessories' class='btn' role='button' id='link'>Accessories</a>
+                    <br>
+                <% } %>
+                <% if(categvar[i].id == 'mens-clothing') { %>
+                    <br>
+                    <img src = '/images/<%= categvar[i].image %>'/>
+                    <p></p>
+                    <a href='/home/mens/mens-clothing' class='btn' role='button' id='link'>Clothing</a>
+                    <br>
+                <% } %>
+            <% } %>
+        </div>
+        </center>
+    <footer>
+        <p>Copyright 2020 OSF Global Services</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/style.css" rel="stylesheet" type="text/css">
+    <title>Shop</title>
+</head>
+<body>
+    <div class ="main">
+        <% for(var i=0; i < categvar.length; i++) { %>
+            <% if(categvar[i].id == subcategoryId) { %> 
+                <div class='tab'>
+                    <% if(genderId == 'womens') { %>
+                        <header><h1>Womens</h1></header>
+                        <a href='http://localhost:3000/home/<%=genderId%>/womens-accessories'>Accessories</a>
+                        <a href='http://localhost:3000/home/<%=genderId%>/womens-jewelry'>Jewelry</a>
+                        <a href='http://localhost:3000/home/<%=genderId%>/womens-clothing'>Clothing</a>
+                    
+                    <% } %>
+                    <% if(genderId == 'mens') { %>
+                        <header><h1>Mens</h1></header>
+                        <a href='http://localhost:3000/home/<%=genderId%>/mens-accessories'>Accessories</a>
+                        <a href='http://localhost:3000/home/<%=genderId%>/mens-clothing'>Clothing</a>
+                    <% } %>
+                </div>
+                <ul class="breadcrumb">
+                    <li><a href='/home'>Home</a></li>
+                    <li><a href='http://localhost:3000/home/<%=genderId%>/<%=categoryId%>/<%=subcategoryId%>'><%= categvar[i].name %></a></li>
+                </ul>
+            <% } %>
+        <% } %>
+    </div>
+    <br>
+    <div class='row'>
+
+        <% for(var i=0; i < prodvar.length; i++) { %> 
+            <% if(prodvar[i].primary_category_id == subcategoryId) { %>
+                <% var n=1 %>
+                <div class='column'>
+                    <img  class='prod' src = '/images/<%=prodvar[i].image_groups[0].images[0].link%>'/>
+                    <h2><%= prodvar[i].name %></h2>
+                    <p><%= prodvar[i].short_description %></p>
+                    <p>Price: $<%= prodvar[i].price %></p>
+                    <a class= 'btn' href='http://localhost:3000/home/<%=genderId%>/<%=categoryId%>/<%=subcategoryId%>/<%=prodvar[i].id%>'>More Info</a>
+                </div>
+            <% } %>   
+        <% } %>
+        <% if(n != 1) { %>
+            <h1>There are no products yet!</h1>
+        <% } %>
+    </div>
+    <footer>
+        <p>Copyright 2020 OSF Global Services</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/style.css" rel="stylesheet" type="text/css">
+    <title>Shop</title>
+</head>
+<body>
+    <div class ="main">
+        <% for(var i=0; i < prodvar.length; i++) { %>
+            <% if(prodvar[i].id == productId) { %> 
+                <div class='tab'>
+                    <% if(genderId == 'womens') { %>
+                        <header><h1>Womens</h1></header>
+                        <a href='http://localhost:3000/home/<%=genderId%>/womens-accessories'>Accessories</a>
+                        <a href='http://localhost:3000/home/<%=genderId%>/womens-jewelry'>Jewelry</a>
+                        <a href='http://localhost:3000/home/<%=genderId%>/womens-clothing'>Clothing</a>
+                    
+                    <% } %>
+                    <% if(genderId == 'mens') { %>
+                        <header><h1>Mens</h1></header>
+                        <a href='http://localhost:3000/home/<%=genderId%>/mens-accessories'>Accessories</a>
+                        <a href='http://localhost:3000/home/<%=genderId%>/mens-clothing'>Clothing</a>
+                    <% } %>
+                </div>
+                <ul class="breadcrumb">
+                    <li><a href='/home'>Home</a></li>
+                    <li><a href='http://localhost:3000/home/<%=genderId%>/<%=subcategoryId%>/<%=prodvar[i].id%>>'><%= prodvar[i].name %></a></li>
+                </ul>
+                <center>
+                <br>
+                <img  src = '/images/<%=prodvar[i].image_groups[0].images[0].link%>'/>
+                <h2><%= prodvar[i].name %></h2>
+                <p><%= prodvar[i].long_description %></p>
+                <p>Price $<%= prodvar[i].master.price%> <%=prodvar[i].currency %></p>
+
+                <% if(categoryId == 'womens-clothing' || categoryId == 'mens-clothing')  { %>
+
+                    <form action="/home/<%=genderId%>/<%=categoryId%>/<%=subcategoryId%>/<%=productId%>" method='POST'>
+                        <br><label for="color"><h3>Color:</h3></label><br>
+                        <% for(var l=0; l < prodvar[i].variation_attributes[0].values.length; l++){ %>
+                            <% if(prodvar[i].variation_attributes[0].values[l].orderable == true){ %>
+                                <input type="radio" name="color" id='color' value='<%=prodvar[i].variation_attributes[0].values[l].value%>' checked=''><%=prodvar[i].variation_attributes[0].values[l].name%></input><br><br>
+                            <% } %>
+                        <% } %>
+                    
+                        <br><label for="size"><h3>Size:</h3></label><br>
+                        <% for(var l=0; l < prodvar[i].variation_attributes[1].values.length; l++){ %>
+                            <% if(prodvar[i].variation_attributes[1].values[l].orderable == true){ %>
+                                <input type="radio" name="size" id='size' value='<%=prodvar[i].variation_attributes[1].values[l].value%>' checked=''><%=prodvar[i].variation_attributes[1].values[l].name%></input><br><br>
+                            <% } %>
+                        <% } %>
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantity" name="quantity" min="1" max="10">
+                        <br>
+                        <button type="submit" class='btn'>Add to cart</button>
+                    </form>
+                <% } else { %>
+                    <form action="/home/<%=genderId%>/<%=categoryId%>/<%=subcategoryId%>/<%=productId%>" method='POST'>
+                        <br><label for="color"><h3>Color:</h3></label><br>
+                        <% for(var l=0; l < prodvar[i].variation_attributes[0].values.length; l++){ %>
+                            <% if(prodvar[i].variation_attributes[0].values[l].orderable == true){ %>
+                                <input type="radio" name="color" id='color' value='<%=prodvar[i].variation_attributes[0].values[l].value%>' checked=''><%=prodvar[i].variation_attributes[0].values[l].name%></input><br><br>
+                            <% } %>
+                        <% } %>
+                    
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantity" name="quantity" min="1" max="10">
+                        <br>
+                        <button type="submit" class='btn'>Add to cart</button>
+                    </form>
+                <% } %>
+                </center>
+            <% } %>
+        <% } %>
+    </div>
+    <footer>
+        <p>Copyright 2020 OSF Global Services</p>
+    </footer>
+</body>
+</html>

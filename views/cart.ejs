@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/style.css" rel="stylesheet" type="text/css">
+    <title>Shop</title>
+</head>
+<body>
+    <div class ="main">
+        <header><h1>Cart</h1></header>
+            <ul class= "breadcrumb">
+                <li><a href='/home'>Home</a></li>
+            </ul>
+    <form action='/home/shopping-cart' method='POST' >
+    </div>
+    <% for(var m=0; m < cart.length; m++) { %>
+        <% for(var i=0; i < prodvar.length; i++) { %>
+            <% if(prodvar[i].id == cart[m].productId) { %> 
+                <div class='prod'>
+                <h5><%= prodvar[i].name %></h5>
+                <% for(var j=0; j < prodvar[i].variants.length; j++) { %>
+                    <% if(prodvar[i].variants[j].product_id == cart[m].variantId) { %> 
+                        <% let colorId = prodvar[i].variants[j].variation_values.color %>
+                        <% let sizeId = prodvar[i].variants[j].variation_values.size %>
+                        <% if(sizeId !== undefined) { %>
+                            <% for(var k=0; k < prodvar[i].variation_attributes[1].values.length; k++) { %>
+                                <% if(prodvar[i].variation_attributes[1].values[k].value == sizeId) { %>
+                                    <p>Size: <%= prodvar[i].variation_attributes[1].values[k].name%></p>
+                                <% } %>
+                            <% } %>
+                            <% for(var k=0; k < prodvar[i].variation_attributes[0].values.length; k++) { %>
+                                    <% if(prodvar[i].variation_attributes[0].values[k].value == colorId) { %>
+                                        <p>Color: <%= prodvar[i].variation_attributes[0].values[k].name %></p>
+                                    <% } %>
+                            <% } %>
+                        <% } else { %> 
+                            <% for(var k=0; k < prodvar[i].variation_attributes[0].values.length; k++) { %>
+                                <% if(prodvar[i].variation_attributes[0].values[k].value == colorId) { %>
+                                    <p>Color: <%= prodvar[i].variation_attributes[0].values[k].name %></p>
+                                <% } %>
+                            <% } %>
+                        <% } %>
+                        
+                        <p>Quantity: <%= cart[m].quantity %>  Price: $<%= prodvar[i].master.price%> <%=prodvar[i].currency %></p>
+                    <% } %>
+                <% } %>
+            </div>
+            <% } %>
+        <% } %>
+    <% } %>
+</body>
+</html>
